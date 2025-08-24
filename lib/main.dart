@@ -56,18 +56,28 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFF000000),
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+      color: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
       child: Row(
         children: [
-          const Text(
-            "🎵 Music Store",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const Text(
+                "🎵 Music",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              Text(
+                "Store",
+                style: TextStyle(fontSize: 15, color: Colors.black),
+              ),
+            ],
           ),
+
           const Spacer(),
           _buildMenuItem("Trang chủ"),
           _buildMenuItem("Blog"),
@@ -81,9 +91,12 @@ class Header extends StatelessWidget {
   Widget _buildMenuItem(String text) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Text(
-        text,
-        style: const TextStyle(color: Colors.white70, fontSize: 16),
+      child: InkWell(
+        onTap: () {},
+        child: Text(
+          text,
+          style: const TextStyle(color: Colors.black, fontSize: 16),
+        ),
       ),
     );
   }
@@ -96,59 +109,111 @@ class HeroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 20),
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
-      child: Column(
+      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 50),
+      decoration: const BoxDecoration(color: Colors.white),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start, // chỉnh vị trí
         children: [
-          const Text(
-            "Đam mê âm nhạc, chia sẻ yêu thương",
-            style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 12),
-          const Text(
-            "Chào mừng đến với thế giới nhạc cụ! Tôi là Minh, người yêu âm nhạc và muốn chia sẻ niềm đam mê này với mọi người.",
-            style: TextStyle(color: Colors.white70, fontSize: 16),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 32),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.deepPurple,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 16,
+          Container(
+            color: Colors.white,
+            padding: EdgeInsets.all(50),
+            height: 700,
+            width: 700,
+            child: Expanded(
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    "HI! I'm Manh the Intruction",
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
-                onPressed: () {},
-                child: const Text("Đọc Blog"),
+                  SizedBox(height: 20),
+                  const Text(
+                    "Đam mê âm nhạc, chia sẻ yêu thương",
+                    style: TextStyle(fontSize: 15, color: Colors.black),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: BeveledRectangleBorder(
+                            borderRadius: BorderRadiusGeometry.zero,
+                          ),
+                          backgroundColor: Colors.green[800],
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 30,
+                            vertical: 25,
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: const Text("Đọc Blog"),
+                      ),
+                      const SizedBox(width: 16),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          shape: BeveledRectangleBorder(
+                            borderRadius: BorderRadiusGeometry.zero,
+                          ),
+                          side: const BorderSide(color: Colors.white, width: 2),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 30,
+                            vertical: 25,
+                          ),
+                          foregroundColor: Colors.black,
+                        ),
+                        onPressed: () {},
+                        child: const Text("Xem Sản phẩm"),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              const SizedBox(width: 16),
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  side: const BorderSide(color: Colors.white, width: 2),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 16,
+            ),
+          ),
+          SizedBox(width: 50),
+          Stack(
+            clipBehavior: Clip.none, // cho phép phần tử đè ra ngoài
+            alignment: Alignment.topCenter,
+            children: [
+              Container(
+                width: 1000,
+                height: 500,
+                child: Expanded(
+                  child: ClipRRect(
+                    child: Image.asset(
+                      "assets/images/background.jpg",
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  foregroundColor: Colors.white,
                 ),
-                onPressed: () {},
-                child: const Text("Xem Sản phẩm"),
+              ),
+              Positioned(
+                bottom: -200,
+                right: 150,
+                child: Container(
+                  width: 400,
+                  height: 500,
+                  decoration: BoxDecoration(color: Colors.white),
+                  child: Container(
+                    margin: EdgeInsets.all(20),
+                    child: ClipRRect(
+                      child: Image.asset(
+                        "assets/images/1.jpg",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
