@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:web_shop_dan/ImageCarousel.dart';
+import 'package:web_shop_dan/hero.dart';
 
 void main() {
   runApp(const MusicStoreApp());
@@ -20,7 +22,7 @@ class MusicStoreApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(useMaterial3: true).copyWith(
-        scaffoldBackgroundColor: const Color(0xFF111827),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 255, 255, 255),
         textTheme: ThemeData.dark().textTheme.apply(fontFamily: "Inter"),
       ),
       home: const HomePage(),
@@ -36,11 +38,18 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: const [
+          children: [
             Header(),
             HeroSection(),
+            SizedBox(height: 100),
             AboutSection(),
             BlogSection(),
+            Parameter(),
+            SizedBox(height: 100),
+            ImageCarousel(),
+            SizedBox(height: 50),
+            Slution(),
+            Follow(),
             FooterSection(),
           ],
         ),
@@ -57,7 +66,7 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 50),
       child: Row(
         children: [
           Column(
@@ -77,7 +86,6 @@ class Header extends StatelessWidget {
               ),
             ],
           ),
-
           const Spacer(),
           _buildMenuItem("Trang chủ"),
           _buildMenuItem("Blog"),
@@ -90,134 +98,13 @@ class Header extends StatelessWidget {
 
   Widget _buildMenuItem(String text) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 35),
       child: InkWell(
         onTap: () {},
         child: Text(
           text,
           style: const TextStyle(color: Colors.black, fontSize: 16),
         ),
-      ),
-    );
-  }
-}
-
-/// ---------------- HERO ----------------
-class HeroSection extends StatelessWidget {
-  const HeroSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 50),
-      decoration: const BoxDecoration(color: Colors.white),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start, // chỉnh vị trí
-        children: [
-          Container(
-            color: Colors.white,
-            padding: EdgeInsets.all(50),
-            height: 700,
-            width: 700,
-            child: Expanded(
-              flex: 1,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "HI! I'm Manh the Intruction",
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  const Text(
-                    "Đam mê âm nhạc, chia sẻ yêu thương",
-                    style: TextStyle(fontSize: 15, color: Colors.black),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: BeveledRectangleBorder(
-                            borderRadius: BorderRadiusGeometry.zero,
-                          ),
-                          backgroundColor: Colors.green[800],
-                          foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 30,
-                            vertical: 25,
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: const Text("Đọc Blog"),
-                      ),
-                      const SizedBox(width: 16),
-                      OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          shape: BeveledRectangleBorder(
-                            borderRadius: BorderRadiusGeometry.zero,
-                          ),
-                          side: const BorderSide(color: Colors.white, width: 2),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 30,
-                            vertical: 25,
-                          ),
-                          foregroundColor: Colors.black,
-                        ),
-                        onPressed: () {},
-                        child: const Text("Xem Sản phẩm"),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(width: 50),
-          Stack(
-            clipBehavior: Clip.none, // cho phép phần tử đè ra ngoài
-            alignment: Alignment.topCenter,
-            children: [
-              Container(
-                width: 1000,
-                height: 500,
-                child: Expanded(
-                  child: ClipRRect(
-                    child: Image.asset(
-                      "assets/images/background.jpg",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                bottom: -200,
-                right: 150,
-                child: Container(
-                  width: 400,
-                  height: 500,
-                  decoration: BoxDecoration(color: Colors.white),
-                  child: Container(
-                    margin: EdgeInsets.all(20),
-                    child: ClipRRect(
-                      child: Image.asset(
-                        "assets/images/1.jpg",
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }
@@ -230,54 +117,71 @@ class AboutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 40),
-      color: const Color(0xFF111827),
+      height: 1200,
+      padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 100),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/3.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Về tôi",
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+          Container(
+            padding: EdgeInsets.all(40),
+            color: Colors.black.withOpacity(0.5),
+            height: 700,
+            width: 600,
+            child: Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Text(
+                        "About Me",
+                        style: TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(width: 30),
+                      Container(
+                        width: 60,
+                        height: 60,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            colors: [Color(0xFFA78BFA), Color(0xFF3B82F6)],
+                          ),
+                        ),
+                        child: const Center(
+                          child: Text("🎸", style: TextStyle(fontSize: 30)),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  "Xin chào! Tôi là Minh, một người yêu âm nhạc với hơn 10 năm kinh nghiệm chơi guitar và piano...",
-                  style: TextStyle(color: Colors.white70, fontSize: 16),
-                ),
-                const SizedBox(height: 20),
-                Wrap(
-                  spacing: 8,
-                  children: [
-                    _buildChip("Guitar", Colors.purple),
-                    _buildChip("Piano", Colors.blue),
-                    _buildChip("Ukulele", Colors.green),
-                  ],
-                ),
-              ],
+                  const SizedBox(height: 20),
+                  const Text(
+                    "Xin chào! Tôi là Mạnh, một người yêu âm nhạc ",
+                    style: TextStyle(color: Colors.white70, fontSize: 16),
+                  ),
+                  const SizedBox(height: 20),
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      _buildChip("Guitar", Colors.purple),
+                      _buildChip("Piano", Colors.blue),
+                      _buildChip("Ukulele", Colors.green),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(width: 40),
-          Container(
-            width: 160,
-            height: 160,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: LinearGradient(
-                colors: [Color(0xFFA78BFA), Color(0xFF3B82F6)],
-              ),
-            ),
-            child: const Center(
-              child: Text("🎸", style: TextStyle(fontSize: 60)),
-            ),
-          ),
         ],
       ),
     );
@@ -299,7 +203,6 @@ class BlogSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 40),
-      color: const Color(0xFF1F2937),
       child: Column(
         children: [
           const Text(
@@ -413,6 +316,263 @@ class BlogSection extends StatelessWidget {
                   ],
                 ),
               ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Parameter extends StatelessWidget {
+  const Parameter({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(200),
+      child: Column(
+        children: [
+          Text(
+            "Some of the Results I'm Proud of",
+            style: TextStyle(
+              fontSize: 50,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 30),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Text(
+                    '45',
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: const Color.fromARGB(255, 69, 117, 15),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '---',
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: const Color.fromARGB(255, 69, 117, 15),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "countries visited",
+                    style: TextStyle(fontSize: 20, color: Colors.grey[700]),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    '150',
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: const Color.fromARGB(255, 69, 117, 15),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '---',
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: const Color.fromARGB(255, 69, 117, 15),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "cities visited",
+                    style: TextStyle(fontSize: 20, color: Colors.grey[700]),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    '90 000+',
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: const Color.fromARGB(255, 69, 117, 15),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '---',
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: const Color.fromARGB(255, 69, 117, 15),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "photos taken",
+                    style: TextStyle(fontSize: 20, color: Colors.grey[700]),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    '394',
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: const Color.fromARGB(255, 69, 117, 15),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '---',
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: const Color.fromARGB(255, 69, 117, 15),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "blog articles",
+                    style: TextStyle(fontSize: 20, color: Colors.grey[700]),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(height: 50),
+          Text(
+            "Latest Stories",
+            style: TextStyle(
+              fontSize: 50,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            '---',
+            style: TextStyle(
+              fontSize: 50,
+              color: const Color.fromARGB(255, 0, 0, 0),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                height: 1000,
+                width: 700,
+                color: Colors.amber,
+                child: Text("đâsdas"),
+              ),
+              Container(
+                height: 1000,
+                width: 700,
+                color: Colors.red,
+                child: Text("đâsdas"),
+              ),
+            ],
+          ),
+          SizedBox(height: 50),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              shape: BeveledRectangleBorder(
+                borderRadius: BorderRadiusGeometry.zero,
+              ),
+              backgroundColor: Colors.green[800],
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+            ),
+            onPressed: () {},
+            child: const Text(
+              "READ MORE",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Slution extends StatelessWidget {
+  const Slution({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(150),
+      color: Colors.grey[300],
+      height: 500,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(width: 2, height: 120, color: Colors.black),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.format_quote, size: 40, color: Colors.green),
+                const SizedBox(height: 10),
+                const Text(
+                  "Because in the end, you won’t remember the time you spent "
+                  "working in the office or mowing your lawn. Climb that "
+                  "goddamn mountain.",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  "Jack Kerouac",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontStyle: FontStyle.italic,
+                    fontSize: 20,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Follow extends StatelessWidget {
+  const Follow({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity, // full ngang
+      height: 3200,
+      padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 100),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/11.jpg"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Column(
+        children: [
+          Text(
+            "Some of the Results I'm Proud of",
+            style: TextStyle(
+              fontSize: 50,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],
