@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:web_shop_dan/ImageCarousel.dart';
+import 'package:web_shop_dan/common/ImageGridScreen.dart';
+import 'package:web_shop_dan/common/formauth.dart';
 import 'package:web_shop_dan/hero.dart';
 
 void main() {
@@ -557,7 +559,7 @@ class Follow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity, // full ngang
-      height: 3200,
+      height: 3540,
       padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 100),
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -571,10 +573,153 @@ class Follow extends StatelessWidget {
             "Some of the Results I'm Proud of",
             style: TextStyle(
               fontSize: 50,
-              color: Colors.black,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
+          SizedBox(height: 50),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                height: 700,
+                width: 300,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset("assets/images/5.jpg"),
+                    SizedBox(height: 30),
+                    Text("17 Dec 2019"),
+                    SizedBox(height: 12),
+                    Text(
+                      "Vienna, the Emperor's Pearl",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    Text(
+                      'ádasdhasjdhajsdhjsadhjashdjasdhasjdhjashdjashdjhasjdhasgdasdjasgdahsdgadjgjasdgajsdgasj',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    SizedBox(height: 15),
+                    Row(
+                      children: [
+                        Icon(Icons.circle),
+                        SizedBox(width: 10),
+                        Text('Jack'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 700,
+                width: 300,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset("assets/images/6.jpg"),
+                    SizedBox(height: 30),
+                    Text("17 Dec 2019"),
+                    SizedBox(height: 12),
+                    Text(
+                      "Vienna, the Emperor's Pearl",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    Text(
+                      'ádasdhasjdhajsdhjsadhjashdjasdhasjdhjashdjashdjhasjdhasgdasdjasgdahsdgadjgjasdgajsdgasj',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    SizedBox(height: 15),
+                    Row(
+                      children: [
+                        Icon(Icons.circle),
+                        SizedBox(width: 10),
+                        Text('Jack'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 700,
+                width: 300,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset("assets/images/7.jpg"),
+                    SizedBox(height: 30),
+                    Text("17 Dec 2019"),
+                    SizedBox(height: 12),
+                    Text(
+                      "Vienna, the Emperor's Pearl",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    Text(
+                      'ádasdhasjdhajsdhjsadhjashdjasdhasjdhjashdjashdjhasjdhasgdasdjasgdahsdgadjgjasdgajsdgasj',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    SizedBox(height: 15),
+                    Row(
+                      children: [
+                        Icon(Icons.circle),
+                        SizedBox(width: 10),
+                        Text('Jack'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 100),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              shape: BeveledRectangleBorder(
+                borderRadius: BorderRadiusGeometry.zero,
+              ),
+              backgroundColor: Colors.transparent,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+            ),
+            onPressed: () {},
+            child: const Text("READ ME"),
+          ),
+          SizedBox(height: 100),
+          Text(
+            "FOLLOW ME",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 35,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+          SizedBox(height: 20),
+          Container(height: 2, width: 150, color: Colors.black),
+          SizedBox(height: 30),
+          Text(
+            "Join me in social media and stay tuned!",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.w100,
+            ),
+          ),
+          SizedBox(height: 150),
+          ImageGridScreen(),
+          SizedBox(height: 50),
+          AskMeAnythingScreen(),
         ],
       ),
     );
